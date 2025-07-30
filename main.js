@@ -31,15 +31,20 @@ function updateTable() {
 }
 
 async function checkServer(host, port) {
-	const url = `https://portchecker.io/api/${host}/${port}`;
+  const targetUrl = `https://portchecker.io/api/${host}/${port}`;
+  const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
 
-  console.log(url);  // Should output actual URL like https://portchecker.io/api/198.244.165.233/3724
   try {
-    const res = await fetch(url);
+    const res = await fetch(proxyUrl);
+    if (!res.ok) throw new Error("Network response was not ok");
     const data = await res.json();
-	console.log("API response data:", data);
-    return data.status === "open";
+
+    console.log("Raw proxy response contents:", data.contents);
+
+    // data.contents is a string "True" or "False", so just compare directly:
+    return data.contents.trim().toLowerCase() === "true";
   } catch (e) {
+    console.error("Error fetching server status:", e);
     return false;
   }
 }
