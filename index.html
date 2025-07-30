@@ -13,6 +13,7 @@
       --accent: #4ade80;
       --error: #f87171;
       --border: #2c2c2c;
+      --discord: #5865F2;
     }
 
     body {
@@ -23,15 +24,32 @@
       color: var(--text);
     }
 
-    h1 {
-      font-size: 1.75rem;
-      margin-bottom: 0.5rem;
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
     }
 
-    p {
-      margin-bottom: 2rem;
+    h1 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .discord-btn {
+      display: inline-block;
+      background-color: var(--discord);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 0.4rem;
       font-size: 0.95rem;
-      color: #bbb;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 0 0 1px var(--border);
+      transition: background-color 0.2s;
+    }
+
+    .discord-btn:hover {
+      background-color: #4752C4;
     }
 
     table {
@@ -86,11 +104,47 @@
         font-size: 0.85rem;
       }
     }
+
+    .discord-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--discord);
+  color: rgb(255, 255, 255);
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 0 0 1px var(--border);
+  transition: background-color 0.2s;
+  height: 2.4rem; /* fixed height matching padding for icon scaling */
+}
+
+.discord-btn img {
+  height: 100%; /* fills full button height */
+  width: auto; /* keep aspect ratio */
+  color: white;
+  vertical-align: middle;
+  display: block;
+}
+
   </style>
 </head>
 <body>
-  <h1>Server Status Dashboard</h1>
-  <p>Live server check every 15 seconds using <a href="https://portchecker.io" target="_blank">portchecker.io</a>.</p>
+  <div class="header">
+    <h1>Server Status Dashboard</h1>
+<a href="https://discord.gg/8MsMac3e" target="_blank" class="discord-btn">
+  <img src="discord-icon-svgrepo-com.svg" alt="Discord Icon" />
+  Join our Discord
+</a>
+<a href="https://www.project-epoch.net/community/discord/" target="_blank" class="discord-btn">
+  <img src="discord-icon-svgrepo-com.svg" alt="Discord Icon" />
+  Join Project Epoch
+</a>
+  </div>
+
   <table id="status-table">
     <thead>
       <tr>
@@ -102,6 +156,13 @@
     </thead>
     <tbody></tbody>
   </table>
+
   <script src="main.js"></script>
+
+    <div class="header">
+    <h1>Our discord:</h1>
+    <p>Has a bot that posts server status updates in a channel</p>
+    <p>Includes a bot that automatically logs you in.</p>
+  </div>
 </body>
 </html>
