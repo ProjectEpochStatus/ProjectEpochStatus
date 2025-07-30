@@ -31,10 +31,13 @@ function updateTable() {
 }
 
 async function checkServer(host, port) {
-  const url = 'https://portchecker.io/api/${host}/${port}';
+	const url = `https://cors-anywhere.herokuapp.com/https://portchecker.io/api/${host}/${port}`;
+
+  console.log(url);  // Should output actual URL like https://portchecker.io/api/198.244.165.233/3724
   try {
     const res = await fetch(url);
     const data = await res.json();
+	console.log("API response data:", data);
     return data.status === "open";
   } catch (e) {
     return false;
