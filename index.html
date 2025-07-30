@@ -5,24 +5,98 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Server Status Monitor</title>
   <style>
-    body { font-family: sans-serif; background: #f4f4f4; padding: 20px; }
-    h1 { color: #333; }
-    table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-    th, td { padding: 12px; border: 1px solid #ccc; text-align: center; }
-    th { background: #333; color: white; }
-    .online { color: green; font-weight: bold; }
-    .offline { color: red; font-weight: bold; }
+    :root {
+      color-scheme: dark;
+      --bg: #121212;
+      --card: #1e1e1e;
+      --text: #f0f0f0;
+      --accent: #4ade80;
+      --error: #f87171;
+      --border: #2c2c2c;
+    }
+
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+      color: #bbb;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: var(--card);
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px var(--border);
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.95rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background-color: #222;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    td:last-child, th:last-child {
+      white-space: nowrap;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .online {
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .offline {
+      color: var(--error);
+      font-weight: bold;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      th, td {
+        padding: 0.6rem;
+        font-size: 0.85rem;
+      }
+    }
   </style>
 </head>
 <body>
   <h1>Server Status Dashboard</h1>
-  <p>Updated every 15 seconds. Checking real TCP ports via <a href="https://portchecker.io" target="_blank">portchecker.io</a>.</p>
+  <p>Live server check every 15 seconds using <a href="https://portchecker.io" target="_blank">portchecker.io</a>.</p>
   <table id="status-table">
     <thead>
       <tr>
         <th>Server</th>
-        <th>Current Status</th>
-        <th>Previous Status</th>
+        <th>Status</th>
+        <th>Previous</th>
         <th>Last Change</th>
       </tr>
     </thead>
