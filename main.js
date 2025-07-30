@@ -31,7 +31,7 @@ function updateTable() {
 }
 
 async function checkServer(host, port) {
-	const url = `https://cors-anywhere.herokuapp.com/https://portchecker.io/api/${host}/${port}`;
+	const url = `https://portchecker.io/api/${host}/${port}`;
 
   console.log(url);  // Should output actual URL like https://portchecker.io/api/198.244.165.233/3724
   try {
