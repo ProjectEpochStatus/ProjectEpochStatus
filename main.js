@@ -31,7 +31,7 @@ function updateTable() {
 }
 
 async function checkServer(host, port) {
-  const url = `https://api.portchecker.io/v1/?host=${host}&port=${port}&type=tcp`;
+  const url = 'https://portchecker.io/api/${host}/${port}';
   try {
     const res = await fetch(url);
     const data = await res.json();
